@@ -1,12 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+
+//navigation container
+import { NavigationContainer } from '@react-navigation/native';
+
+//tab navigation
+import MyTabs from './navigation/TabNavigator';
+
+//colors
+import colors from "./utils/colors"
+
+const appTheme = {
+  colors: {
+    background: colors.theme
+  },
+}
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello videos downloader</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer theme={appTheme}>
+      <MyTabs />
+    </NavigationContainer>
   );
 }
 
