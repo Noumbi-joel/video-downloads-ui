@@ -1,9 +1,12 @@
-import React from 'react';
-import { View, StyleSheet, Text, Image, TextInput, TouchableOpacity } from 'react-native';
+import React, {useEffect} from 'react';
+import { View, StyleSheet, Text, Image, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 
 import colors from '../utils/colors';
 
 const SearchBar = ({logos, label}) => {
+    useEffect(() => {
+        console.log(Dimensions.get("window").width);
+    }, [])
   return (
       <View style={styles.container}>
         <View style={styles.searchBar}>
@@ -33,7 +36,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.white,
-        width: 290,
+        width: Dimensions.get("window").width > 328?350:310,
         height: 52,
         borderRadius: 16
     },

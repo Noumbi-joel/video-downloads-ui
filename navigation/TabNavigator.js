@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import React from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, Dimensions } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -76,7 +76,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         borderRadius: 15,
         height: 70,
-        shadowOpacity: 0.2,
+        shadowOpacity: 0.1,
+        borderTopWidth: 0,
         shadowColor: "#f1f1f1",
         shadowOffset: {
             width: 0,

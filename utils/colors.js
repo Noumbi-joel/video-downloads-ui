@@ -14,5 +14,7 @@ export default {
     white: "#fff",
     black: "#000",
     view_text_color: "#2c81cd",
-    sn_text_color: "#343434"
+    sn_text_color: "#343434",
+    videoPicTextColor: "#161616",
+    videoPicSndTextColor: "#5a5a5a"
 }

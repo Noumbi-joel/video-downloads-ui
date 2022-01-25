@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import colors from '../utils/colors';
 
 //components
@@ -22,10 +22,11 @@ const SNFrame = ({logos}) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 290,
+    width: Dimensions.get("window").width > 328?350:310,
     height: 157,
     backgroundColor: colors.white,
     alignSelf: 'center',
+    alignItems: 'center',
     borderRadius: 25,
     padding: 10,
     marginBottom: 10

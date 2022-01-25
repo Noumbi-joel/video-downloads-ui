@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 
 //colors
 import colors from '../utils/colors';
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'center',
         backgroundColor: colors.white,
-        width: 290,
+        width: Dimensions.get("window").width > 328 ?350:310,
         height: 52,
         borderRadius: 15,
         padding: 10
