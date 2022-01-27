@@ -1,26 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-//navigation container
-import { NavigationContainer } from '@react-navigation/native';
-
-//tab navigation
-import MyTabs from './navigation/TabNavigator';
-
-//colors
-import colors from "./utils/colors"
-
-const appTheme = {
-  colors: {
-    background: colors.theme
-  },
-}
+//app navigation
+import AppNavigator from './navigation/AppNavigator';
 
 export default function App() {
   return (
-    <NavigationContainer theme={appTheme}>
-      <MyTabs />
-    </NavigationContainer>
+      <AppNavigator />
   );
 }
 

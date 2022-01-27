@@ -5,17 +5,29 @@ import colors from '../utils/colors';
 //components
 import SNBox from './SNBox';
 
-const SNFrame = ({logos}) => {
+const SNFrame = (props) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, props.noScroll ? {height: 180}:{}]}>
+      {props.noScroll ?
+        <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+        {
+          props.logos.map((item, index) => <SNBox noScroll={props.noScroll} logo={item.name} color={item.color} name={item.logoName} key={index} />)
+        }
+      </View>
+      :
       <ScrollView horizontal style={{flex: 0.3}}>
         {
-          logos.map((item, index) => <SNBox logo={item.name} color={item.color} name={item.logoName} key={index} />)
+          props.logos.map((item, index) => <SNBox logo={item.name} color={item.color} name={item.logoName} key={index} />)
         }
       </ScrollView>
-      <TouchableOpacity style={styles.blueButton}>
-        <Text style={styles.blueButtonText}>View all</Text>
-      </TouchableOpacity>
+      }
+      {props.noBtn ?
+        null
+        :
+        <TouchableOpacity style={styles.blueButton} onPress={() => props.navigation.navigate("HomeStack", {screen:"ViewAll"})}>
+          <Text style={styles.blueButtonText}>View all</Text>
+        </TouchableOpacity>
+      }
     </View>
   )
 };
@@ -29,10 +41,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 25,
     padding: 10,
-    marginBottom: 10
-  },
+    marginVertical: 10,
+    overflow: 'hidden'
+ },
   blueButton: {
-    width: 270,
+    width: '100%',
     height: 45,
     backgroundColor: colors.view_all_bg,
     alignSelf: 'center',

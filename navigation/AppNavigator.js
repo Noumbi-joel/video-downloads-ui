@@ -1,14 +1,20 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createStackNavigator} from "@react-navigation/stack";
+
+//navigation container
+import { NavigationContainer } from '@react-navigation/native';
 
 import React from 'react';
 import { StyleSheet, Image, Dimensions } from 'react-native';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 //screens 
 import HomeScreen from '../screens/HomeScreen';
 import MeScreen from '../screens/MeScreen';
 import MyFilesScreen from '../screens/MyFilesScreen';
+import ViewAllScreen from '../screens/ViewAllScreen';
 
 //images
 import home from "../assets/png/home.png"
@@ -21,7 +27,23 @@ import decMe from "../assets/png/decolored_me.png"
 //colors
 import colors from '../utils/colors';
 
-const MyTabs = () => {
+
+const appTheme = {
+    colors: {
+      background: colors.theme
+    },
+}
+
+const HomeStack = (props) => {
+    return (
+        <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="ViewAll" options={{headerShown: false}} component={ViewAllScreen} />
+        </Stack.Navigator>
+    )
+}
+
+const AppTabs = (props) => {
     return (
         <Tab.Navigator
             screenOptions={{
@@ -33,17 +55,17 @@ const MyTabs = () => {
                 }
             }}
         >
-          <Tab.Screen name="Home" component={HomeScreen} 
+        <Tab.Screen name="Home" component={HomeScreen} 
             options={{
                 tabBarLabel: 'Updates',
                 tabBarIcon: ({ color, size, focused }) => (
-                  <Image source={focused ? home:decHome} />
+                <Image source={focused ? home:decHome} />
                 ),
                 tabBarLabel: "Home",
                 headerShown: false,
             }} 
         />
-          <Tab.Screen name="MyFiles" component={MyFilesScreen} 
+        <Tab.Screen name="MyFiles" component={MyFilesScreen} 
             options={{
                 tabBarLabel: 'Updates',
                 tabBarIcon: ({ color, size, focused }) => (
@@ -52,17 +74,32 @@ const MyTabs = () => {
                 tabBarLabel: "My Files"
             }} 
         />
-          <Tab.Screen name="Me" component={MeScreen} 
+        <Tab.Screen name="Me" component={MeScreen} 
             options={{
                 tabBarLabel: 'Updates',
                 tabBarIcon: ({ color, size, focused }) => (
                     <Image source={focused ? Me:decMe} />
                 ),
                 tabBarLabel: "Me",
-                
             }} 
         />
         </Tab.Navigator>
+    )
+}
+
+const AppNavigator = (props) => {
+    return (
+        <NavigationContainer theme={appTheme}>
+            <Stack.Navigator 
+                screenOptions={{
+                    headerShown: false
+                }}
+                initialRouteName='Tabs'
+            >
+                <Stack.Screen name="Tabs" component={AppTabs} />
+                <Stack.Screen name="HomeStack" component={HomeStack} />
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 }
 
@@ -87,4 +124,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default MyTabs;
+export default AppNavigator;

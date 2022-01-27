@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
         width: Dimensions.get("window").width > 328 ?350:310,
         height: 52,
         borderRadius: 15,
-        padding: 10
+        padding: 10,
+        marginVertical: 10
     },
     content: {
         flexDirection: 'row',

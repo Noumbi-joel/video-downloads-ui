@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { View, StyleSheet, Text, Image,TouchableOpacity } from 'react-native';
 import colors from '../utils/colors';
 
 
-const SNBox = ({logo, color, name}) => {
-  return <View style={[styles.container, {backgroundColor: color}]}>
+const SNBox = ({logo, color, name, noScroll}) => {
+  return <TouchableOpacity style={[styles.container, {backgroundColor: color}, noScroll?{}:{}]}>
       <Image source={logo} />
       <Text style={styles.logoName}>{name}</Text>
-  </View>;
+  </TouchableOpacity>;
 };
 
 const styles = StyleSheet.create({

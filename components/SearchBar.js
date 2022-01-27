@@ -1,19 +1,16 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { View, StyleSheet, Text, Image, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 
 import colors from '../utils/colors';
 
-const SearchBar = ({logos, label}) => {
-    useEffect(() => {
-        console.log(Dimensions.get("window").width);
-    }, [])
+const SearchBar = ({logos, label, goBack, navigation}) => {
   return (
       <View style={styles.container}>
         <View style={styles.searchBar}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => goBack ? navigation.goBack() : ''}>
                 <Image source={logos[0]} />
             </TouchableOpacity> 
-            <TextInput style={styles.textInput} placeholder={label} />  
+            <TextInput style={styles.textInput} style={{marginHorizontal: 15}} placeholder={label} />  
             <Image source={logos[3]} style={{marginRight: 10}} />
             <TouchableOpacity>
                 <Image source={logos[1]} />
@@ -29,7 +26,12 @@ const SearchBar = ({logos, label}) => {
 const styles = StyleSheet.create({
     container: {
         alignSelf: "center",
-        marginVertical: 10
+        marginVertical: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,  
+        elevation: 5
     },
     searchBar: {
         flexDirection: 'row',
