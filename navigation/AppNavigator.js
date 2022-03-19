@@ -39,33 +39,16 @@ const appTheme = {
 
 const HomeStack = (props) => {
   return (
-    <Stack.Navigator initialRouteName="forYou">
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="forYou"
+    >
       <Stack.Screen name="forYou" component={forYouScreen} />
-      <Stack.Screen
-        name="ViewAll"
-        options={{ headerShown: false }}
-        component={ViewAllScreen}
-      />
-      <Stack.Screen
-        name="sub"
-        options={{ headerShown: false }}
-        component={SubScreen}
-      />
-      <Stack.Screen
-        name="music"
-        options={{ headerShown: false }}
-        component={MusicScreen}
-      />
-      <Stack.Screen
-        name="trending"
-        options={{ headerShown: false }}
-        component={TrendingScreen}
-      />
-      <Stack.Screen
-        name="channels"
-        options={{ headerShown: false }}
-        component={ChannelsScreen}
-      />
+      <Stack.Screen name="ViewAll" component={ViewAllScreen} />
+      <Stack.Screen name="sub" component={SubScreen} />
+      <Stack.Screen name="music" component={MusicScreen} />
+      <Stack.Screen name="trending" component={TrendingScreen} />
+      <Stack.Screen name="channels" component={ChannelsScreen} />
     </Stack.Navigator>
   );
 };
