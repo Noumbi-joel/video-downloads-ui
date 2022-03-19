@@ -67,7 +67,7 @@ const AppTabs = (props) => {
     >
       <Tab.Screen
         name="Home"
-        component={forYouScreen}
+        component={HomeStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image source={focused ? home : decHome} />
