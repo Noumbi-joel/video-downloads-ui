@@ -17,9 +17,7 @@ const CategoriesSlider = (props) => {
       <ScrollView horizontal contentContainerStyle={styles.content}>
         {props.categories.map((item, index) => (
           <TouchableOpacity
-            onPress={() =>
-              props.navigation.navigate("HomeStack", { screen: item.to })
-            }
+            onPress={() => props.navigation.navigate(item.to)}
             style={[
               styles.catContainer,
               item.isActive ? styles.activeBtnNav : {},
@@ -37,6 +35,7 @@ const CategoriesSlider = (props) => {
 const styles = StyleSheet.create({
   container: {
     alignSelf: "center",
+    alignItems: "center",
     justifyContent: "center",
     backgroundColor: colors.white,
     width: Dimensions.get("window").width > 328 ? 350 : 310,

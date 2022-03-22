@@ -63,6 +63,7 @@ const ForYouScreen = (props) => {
       <ScrollView>
         {videosPics.map((item, index) => (
           <VideoPost
+            {...props}
             videoPic={{
               name: item,
               userLogo: duke,
